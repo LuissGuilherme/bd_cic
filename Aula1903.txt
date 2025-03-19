@@ -1,0 +1,47 @@
+use clinica;
+-- Exemplo de junção
+Select * from medicos as m, consultas as c
+where m.codm = c.codm
+and especialidade in( 'pediatria', 'ortopedia');
+
+Select * from medicos as m
+join consultas as c on m.codm = c.codm
+where especialidade in( 'pediatria', 'ortopedia');
+
+-- Exemplo de união
+Select nome, cpf from medicos union Select nome, cpf from funcionarios;
+
+-- Exercicios Aula 19/03// EX. 01
+Select nome, cpf from medicos where idade < 40 and especialidade NOT IN ('traumatologia'); 
+-- Exercicios Aula 19/03// EX. 02
+Select * from consultas where hora between '14:00' and '18:00'
+and data > '2006/06/19';
+-- Exercicios Aula 19/03// EX. 03
+Select nome, idade from pacientes where cidade not in ('Florianópolis');
+-- Exercicios Aula 19/03// EX. 04
+Select hora from consultas where data  < '2024/06/14' > '2024/12/20';
+-- (nao existe)
+-- Exercicios Aula 19/03// EX. 05
+Select nome, idade * 12 as meses from pacientes;
+-- Exercicios Aula 19/03// EX. 06
+Select cidade from funcionarios;
+-- Exercicios Aula 19/03// EX. 07
+Select salario from funcionarios where cidade = 'Florianópolis';
+-- (nao existe)
+-- Exercicios Aula 19/03// EX. 08
+Select hora from consultas where data = '2024/06/13' order by data desc limit 1;
+-- Exercicios Aula 19/03// EX. 09
+Select avg(idade) as MediaIdade, count(nroa) from medicos;
+ -- Exercicios Aula 19/03// EX. 10
+Select codf, nome, salario - (salario * 0.2) as SalarioLiquido from funcionarios;
+-- Exercicios Aula 19/03// EX. 11
+Select nome from funcionarios where nome like '%a %';
+-- Exercicios Aula 19/03// EX. 12
+Select nome, cpf from funcionarios where cpf != '00000';
+-- Exercicios Aula 19/03// EX. 13
+Select nome, especialidade from medicos where nome like '_o%' and nome like '%o';
+-- Exercicios Aula 19/03// EX. 14
+Select codp, nome from pacientes where idade > 25 and doenca in( 'tendinite', 'fratura', 'gripe', 'sarampo');
+    
+    
+
