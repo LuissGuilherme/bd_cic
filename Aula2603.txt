@@ -12,55 +12,61 @@ select * from movies as m
 -- RIGHT JOIN apresenta todas as tabelas da direita com as tabelas correspondentes da esquerda, mesmo se forem nulas.
 
 
--- Exercícios 26/03 (Ex.01)
+-- Exercícios 26/03 (Ex.01 - Liste todos os diretores e os filmes que eles dirigiram)
 
 select * from directors as d join movies as m on d.id = m.director_id;
 
--- Exercícios 26/03 (Ex.02)
+-- Exercícios 26/03 (Ex.02 - Liste todos os filmes e seus tickets vendidos)
 
 select * from movies as m join tickets as t on m.id = t.movie_id;
 
--- Exercícios 26/03 (Ex.03)
+-- Exercícios 26/03 (Ex.03 - Liste todos os filmes, seus diretores e os tickets vendidos)
 
 select * from movies as m join directors as d on m.director_id = d.id
 join tickets as t on m.id = t.movie_id;
 
--- Exercícios 26/03 (Ex.04)
+-- Exercícios 26/03 (Ex.04 - Liste todos os diretores, incluindo aqueles que não dirigiram nenhum filme)
 
 select * from directors as d left join movies as m on m.director_id = d.id;
 
--- Exercícios 26/03 (Ex.05)
+-- Exercícios 26/03 (Ex.05 - Liste todos os filmes, incluindo aqueles que não têm um diretor associado)
 
 select * from movies as m left join directors as d on m.director_id = d.id;
 
--- Exercícios 26/03 (Ex.06)
+-- Exercícios 26/03 (Ex.06 - Liste todos os filmes que têm tickets e seus diretores, incluindo os filmes sem tickets)
 
 select * from movies as m left join tickets as t on m.id = t.movie_id
 join directors as d on d.id = m.director_id;
 
 -- pode ser usado LEFT JOIN em ambos
 
--- Exercícios 26/03 (Ex.07)
+-- Exercícios 26/03 (Ex.07 - Liste todos os filmes que têm tickets e seus diretores, incluindo os diretores sem filmes)
 
-select * from movies as m left join directors as d on m.director_id = d.id
-left join tickets as t on m.id = t.movie_id;
+select * from movies as m join tickets as t on m.id = t.movie_id
+right join directors as d on m.director_id = d.id;
 
--- Exercícios 26/03 (Ex.08)
+-- Exercícios 26/03 (Ex.08 - Liste todos os filmes que não têm tickets e seus diretores)
+	
+select * from movies as m left join tickets as t on m.id = t.movie_id 
+join directors as d on d.id = m.director_id where t.id is null;
 
-select * from movies as m left join tickets as t on m.id = t.movie_id
-left join directors as d on d.id = m.director_id;
--- ?talvez
+-- select * from movies as m left join tickets as t on m.id = t.movie_id 
+-- left join directors as d on d.id = m.director_id where t.id is null;
+-- falaram que é esse acima (53 e 54) mas possuo dúvidas, interpretação de texto.
 
--- Exercícios 26/03 (Ex.09)
+
+
+-- Exercícios 26/03 (Ex.09 - Liste todos os diretores, incluindo aqueles que não dirigiram nenhum filme, 
+-- e os filmes que têm tickets)
 
 select * from directors as d left join movies as m on d.id = m.director_id
 left join tickets as t on m.id = t.movie_id;
 
--- Exercícios 26/03 (Ex.10)
+-- Exercícios 26/03 (Ex.10 - Liste todos os filmes que têm tickets e seus diretores)
 
 select * from movies as m join tickets as t on m.id = t.movie_id
 join directors as d on d.id = m.director_id;
 
--- Exercícios 26/03 (Ex.11)
+-- Exercícios 26/03 (Ex.11 - Liste todos os filmes e seus diretores, incluindo os filmes sem diretores)
 
 select * from movies as m left join directors as d on m.director_id = d.id;
