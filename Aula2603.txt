@@ -64,20 +64,3 @@ join directors as d on d.id = m.director_id;
 -- Exercícios 26/03 (Ex.11)
 
 select * from movies as m left join directors as d on m.director_id = d.id;
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
