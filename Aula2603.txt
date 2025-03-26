@@ -1,0 +1,83 @@
+select * from directors as d
+         join movies as m
+		    on d.id = m.director_id;
+-- INNER JOIN ignora os valores nulos, só mostra os valores que existem nos dois conjuntos
+
+select * from movies as m
+     left join directors as d on m.director_id = d.id;
+-- LEFT JOIN apresenta todas as tabelas da esquerda com as tabelas correspondentes da direita, mesmo se forem nulas.     	
+
+select * from movies as m
+     right join directors as d on m.director_id = d.id;
+-- RIGHT JOIN apresenta todas as tabelas da direita com as tabelas correspondentes da esquerda, mesmo se forem nulas.
+
+
+-- Exercícios 26/03 (Ex.01)
+
+select * from directors as d join movies as m on d.id = m.director_id;
+
+-- Exercícios 26/03 (Ex.02)
+
+select * from movies as m join tickets as t on m.id = t.movie_id;
+
+-- Exercícios 26/03 (Ex.03)
+
+select * from movies as m join directors as d on m.director_id = d.id
+join tickets as t on m.id = t.movie_id;
+
+-- Exercícios 26/03 (Ex.04)
+
+select * from directors as d left join movies as m on m.director_id = d.id;
+
+-- Exercícios 26/03 (Ex.05)
+
+select * from movies as m left join directors as d on m.director_id = d.id;
+
+-- Exercícios 26/03 (Ex.06)
+
+select * from movies as m left join tickets as t on m.id = t.movie_id
+join directors as d on d.id = m.director_id;
+
+-- pode ser usado LEFT JOIN em ambos
+
+-- Exercícios 26/03 (Ex.07)
+
+select * from movies as m left join directors as d on m.director_id = d.id
+left join tickets as t on m.id = t.movie_id;
+
+-- Exercícios 26/03 (Ex.08)
+
+select * from movies as m left join tickets as t on m.id = t.movie_id
+left join directors as d on d.id = m.director_id;
+-- ?talvez
+
+-- Exercícios 26/03 (Ex.09)
+
+select * from directors as d left join movies as m on d.id = m.director_id
+left join tickets as t on m.id = t.movie_id;
+
+-- Exercícios 26/03 (Ex.10)
+
+select * from movies as m join tickets as t on m.id = t.movie_id
+join directors as d on d.id = m.director_id;
+
+-- Exercícios 26/03 (Ex.11)
+
+select * from movies as m left join directors as d on m.director_id = d.id;
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
